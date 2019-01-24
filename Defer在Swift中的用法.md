@@ -6,7 +6,7 @@
 ### 它是如何工作的？
 一个defer语句会发一个方法退出之前执行其中的代码。
 
-```
+```swift
 func updateImage() {
     defer { print("Did update image") }
 
@@ -33,7 +33,7 @@ func printStringNumbers() {
 
 最常见的用法是开启和结束一个方法，例如在处理文件访问时。访问完成后，需要关闭文件句柄。你可以感觉到defer语句的好处，这样你就不会担心忘记这样做一件事情，它就像一个清道夫一样。
 
-```
+```swift
 func writeFile() {
     let file: FileHandle? = FileHandle(forReadingAtPath: filepath)
     defer { file?.closeFile() }
@@ -44,7 +44,7 @@ func writeFile() {
 
 ### 确保回调
 defer语句有一个更高级用法：在一个完成回调中确保有返回结果值。这会非常方便，因为我们时常会忘记触发这个回调
-```
+```swift
 func getData(completion: (_ result: Result<String>) -> Void) {
     var result: Result<String>?
     defer {
